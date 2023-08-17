@@ -8,6 +8,7 @@
     <name>${project.artifactId}</name>
     <modules>
         <module>webhook-spring-boot-prod</module>
+        <module>webhook-spring-boot-client</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
