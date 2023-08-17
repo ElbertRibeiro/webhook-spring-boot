@@ -7,6 +7,7 @@
         <groupId>com.elbertribeiro</groupId>
         <artifactId>webhook-spring-boot</artifactId>
         <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>webhook-spring-boot-client</artifactId>
