@@ -1,14 +1,16 @@
 package com.elbertribeiro.webhook;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class WebhookService {
-    @Autowired
-    WebhookRepository webhookRepository;
+    private final WebhookRepository webhookRepository;
+
+    public WebhookService(WebhookRepository webhookRepository) {
+        this.webhookRepository = webhookRepository;
+    }
 
     public List<Webhook> findAll() {
         return webhookRepository.findAll();
