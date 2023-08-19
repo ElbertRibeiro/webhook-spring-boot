@@ -2,7 +2,6 @@ package com.elbertribeiro.alerta;
 
 import com.elbertribeiro.comum.WebHookHttpClient;
 import com.elbertribeiro.webhook.WebhookService;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
