@@ -12,6 +12,12 @@ public class WebhookController {
     @Autowired
     WebhookService webhookService;
 
+    @GetMapping("/doc")
+    public String doc(Webhook webhook) {
+        webhookService.save(webhook);
+        return "doc";
+    }
+
     @GetMapping("list")
     public String listWebhooks(Model model) {
         model.addAttribute("webhooks", webhookService.findAll());
