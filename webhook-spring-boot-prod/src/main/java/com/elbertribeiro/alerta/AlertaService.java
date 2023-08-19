@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,7 +26,7 @@ public class AlertaService {
                 .map(webhook -> {
                     try {
                         webHookHttpClient.get(webhook.getUrl(), String.class);
-                        return new Alerta(webhook.getUrl(), null);
+                        return new Alerta(webhook.getUrl(), "OK");
                     } catch (HttpClientErrorException e) {
                         log.error("Erro ao fazer a requisição para: " + webhook.getUrl(), e);
                         return new Alerta(webhook.getUrl(), e.getStatusCode().toString());
@@ -34,11 +35,11 @@ public class AlertaService {
                 .collect(Collectors.toList());
 
         List<Alerta> appsNaoNotificados = appsNotificados.stream()
-                .filter(alerta -> alerta.getErro() != null)
+                .filter(alerta -> !Objects.equals(alerta.getStatusEnvio(), "OK"))
                 .collect(Collectors.toList());
 
         List<Alerta> appsNotificadosComSucesso = appsNotificados.stream()
-                .filter(alerta -> alerta.getErro() == null)
+                .filter(alerta -> Objects.equals(alerta.getStatusEnvio(), "OK"))
                 .collect(Collectors.toList());
         return new AlertaDto(appsNotificadosComSucesso, appsNaoNotificados);
     }

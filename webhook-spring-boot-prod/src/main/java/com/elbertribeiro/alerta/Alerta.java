@@ -2,18 +2,18 @@ package com.elbertribeiro.alerta;
 
 public class Alerta {
     private String url;
-    private String erro;
+    private String statusEnvio;
 
-    public Alerta(String url, String erro) {
+    public Alerta(String url, String statusEnvio) {
         this.url = url;
-        this.erro = erro;
+        this.statusEnvio = statusEnvio;
     }
 
     public String getUrl() {
         return url;
     }
 
-    public String getErro() {
-        return erro;
+    public String getStatusEnvio() {
+        return statusEnvio;
     }
 }
