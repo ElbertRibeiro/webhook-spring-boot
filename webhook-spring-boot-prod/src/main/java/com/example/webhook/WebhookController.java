@@ -11,21 +11,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/webhooks")
 public class WebhookController {
 
-    @Autowired
-    private WebhookService webhookService;
+    /*@Autowired WebhookService webhookService;
 
     @GetMapping
     public String listWebhooks(Model model) {
         model.addAttribute("webhooks", webhookService.findAll());
         return "webhooks/list";
-    }
+    }*/
 
     @GetMapping("/new")
     public String newWebhookForm() {
         return "webhooks/new";
     }
 
-  /*  @PostMapping
+/*    @PostMapping
     public String createWebhook(Webhook webhook) {
         webhookService.save(webhook);
         return "redirect:/webhooks";
