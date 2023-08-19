@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class WebhookController {
 
-    @Autowired
-    WebhookService webhookService;
+    private final WebhookService webhookService;
+
+    public WebhookController(WebhookService webhookService) {
+        this.webhookService = webhookService;
+    }
 
     @GetMapping("/docs")
     public String doc(Webhook webhook) {
