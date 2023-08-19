@@ -1,4 +1,4 @@
-package com.elbertribeiro.alertar;
+package com.elbertribeiro.alerta;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.GetMapping;
