@@ -12,7 +12,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
-@Log4j2
 public class AlertaService {
     @Autowired
     WebhookService webhookService;
@@ -28,7 +27,6 @@ public class AlertaService {
                         webHookHttpClient.get(webhook.getUrl(), String.class);
                         return new Alerta(webhook.getUrl(), "OK");
                     } catch (HttpClientErrorException e) {
-                        log.error("Erro ao fazer a requisição para: " + webhook.getUrl(), e);
                         return new Alerta(webhook.getUrl(), e.getStatusCode().toString());
                     }
                 })
