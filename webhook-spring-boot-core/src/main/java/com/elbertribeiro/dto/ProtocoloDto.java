@@ -5,7 +5,6 @@ public class ProtocoloDto {
     private String title;
     private String description;
     private String status;
-
     private UsuarioDto assignedTo;
 
     public String getId() {
