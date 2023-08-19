@@ -47,4 +47,15 @@ public class ProtocoloDto {
     public void setAssignedTo(UsuarioDto assignedTo) {
         this.assignedTo = assignedTo;
     }
+
+    @Override
+    public String toString() {
+        return "ProtocoloDto{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", status='" + status + '\'' +
+                ", assignedTo=" + assignedTo +
+                '}';
+    }
 }
