@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS webhook.TAB_WEBHOOK
 
 
 insert into WEBHOOK.TAB_WEBHOOK(TW_ID, TW_URL)
-values (1, 'http://localhost:8081/notificacao');
+values (10, 'http://localhost:8081/notificacao');
 
 insert into WEBHOOK.TAB_WEBHOOK(TW_ID, TW_URL)
-values (2, 'http://localhost:8081/teste');
+values (20, 'http://localhost:8081/teste');
