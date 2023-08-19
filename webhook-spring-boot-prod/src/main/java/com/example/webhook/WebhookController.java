@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller(/*"/webhooks"*/)
 public class WebhookController {
@@ -22,10 +23,10 @@ public class WebhookController {
         return "new";
     }
 
-/*    @PostMapping
+    @PostMapping("/webhooks")
     public String createWebhook(Webhook webhook) {
         webhookService.save(webhook);
         return "redirect:/webhooks";
-    }*/
+    }
 }
 
