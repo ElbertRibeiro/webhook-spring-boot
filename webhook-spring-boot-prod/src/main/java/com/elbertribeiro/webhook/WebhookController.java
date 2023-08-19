@@ -15,7 +15,7 @@ public class WebhookController {
     @GetMapping("/doc")
     public String doc(Webhook webhook) {
         webhookService.save(webhook);
-        return "doc";
+        return "redirect:/";
     }
 
     @GetMapping("list")
