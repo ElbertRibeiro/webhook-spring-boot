@@ -2,7 +2,6 @@ package com.elbertribeiro.alerta;
 
 import com.elbertribeiro.comum.WebHookHttpClient;
 import com.elbertribeiro.webhook.WebhookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
@@ -12,11 +11,13 @@ import java.util.stream.Collectors;
 
 @Service
 public class AlertaService {
-    @Autowired
-    WebhookService webhookService;
+    private final WebhookService webhookService;
+    private final WebHookHttpClient webHookHttpClient;
 
-    @Autowired
-    WebHookHttpClient webHookHttpClient;
+    public AlertaService(WebhookService webhookService, WebHookHttpClient webHookHttpClient) {
+        this.webhookService = webhookService;
+        this.webHookHttpClient = webHookHttpClient;
+    }
 
     public AlertaDto enviaAlerta() {
         List<Alerta> appsNotificados = webhookService.findAll()
