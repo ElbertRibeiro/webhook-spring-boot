@@ -26,7 +26,7 @@ public class WebhookController {
     @PostMapping("/webhooks")
     public String createWebhook(Webhook webhook) {
         webhookService.save(webhook);
-        return "redirect:/webhooks";
+        return "redirect:/list";
     }
 }
 
