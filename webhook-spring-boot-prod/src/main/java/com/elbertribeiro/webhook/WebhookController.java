@@ -12,7 +12,7 @@ public class WebhookController {
     @Autowired
     WebhookService webhookService;
 
-    @GetMapping("/doc")
+    @GetMapping("/docs")
     public String doc(Webhook webhook) {
         webhookService.save(webhook);
         return "redirect:/";
