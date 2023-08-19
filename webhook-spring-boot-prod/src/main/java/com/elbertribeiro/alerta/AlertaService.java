@@ -1,6 +1,7 @@
 package com.elbertribeiro.alerta;
 
 import com.elbertribeiro.comum.WebHookHttpClient;
+import com.elbertribeiro.dto.ProtocoloDto;
 import com.elbertribeiro.webhook.WebhookService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
@@ -19,12 +20,12 @@ public class AlertaService {
         this.webHookHttpClient = webHookHttpClient;
     }
 
-    public AlertaDto enviaAlerta() {
+    public AlertaDto enviaAlerta(ProtocoloDto protocoloDto) {
         List<Alerta> appsNotificados = webhookService.findAll()
                 .stream()
                 .map(webhook -> {
                     try {
-                        webHookHttpClient.get(webhook.getUrl(), String.class);
+                        webHookHttpClient.post(webhook.getUrl(), protocoloDto, String.class);
                         return new Alerta(webhook.getUrl(), "OK");
                     } catch (HttpClientErrorException e) {
                         return new Alerta(webhook.getUrl(), e.getStatusCode().toString());

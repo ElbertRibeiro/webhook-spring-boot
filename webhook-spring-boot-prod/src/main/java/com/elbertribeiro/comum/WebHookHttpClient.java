@@ -1,6 +1,5 @@
 package com.elbertribeiro.comum;
 
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -22,7 +21,7 @@ public class WebHookHttpClient {
 
     public <T> T post(String path, Object request, Class<T> responseType) {
         ResponseEntity<T> response = restTemplate
-                .exchange(path, HttpMethod.POST, (HttpEntity<?>) request, responseType);
+                .postForEntity(path, request, responseType);
         return response.getBody();
     }
 }

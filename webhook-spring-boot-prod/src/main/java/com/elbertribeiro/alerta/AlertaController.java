@@ -20,6 +20,6 @@ public class AlertaController {
     @PostMapping
     public ResponseEntity<AlertaDto> getAlerta(@RequestBody ProtocoloDto protocoloDto) {
         log.info(protocoloDto);
-        return ok(alertaService.enviaAlerta());
+        return ok(alertaService.enviaAlerta(protocoloDto));
     }
 }
