@@ -1,18 +1,20 @@
 package com.elbertribeiro.alerta;
 
+import com.elbertribeiro.dto.ProtocoloDto;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
 @RequestMapping("notificacao")
 @Log4j2
 public class AlertaController {
 
-    @GetMapping
-    public String getAlerta() {
-        log.info("Teste logger");
-        return "alerta";
+    @PostMapping
+    public ResponseEntity<String> getAlerta(@RequestBody ProtocoloDto protocoloDto) {
+        log.info(protocoloDto);
+        return ok("Evento recebido");
     }
 }
