@@ -15,6 +15,7 @@
     <modules>
         <module>webhook-spring-boot-prod</module>
         <module>webhook-spring-boot-client</module>
+        <module>webhook-spring-boot-core</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
