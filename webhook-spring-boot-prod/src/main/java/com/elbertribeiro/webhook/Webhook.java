@@ -1,22 +1,22 @@
 package com.elbertribeiro.webhook;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "TAB_WEBHOOK", schema = "WEBHOOK")
 public class Webhook {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "TW_ID")
+    private Integer id;
+    @Column(name = "TW_URL")
     private String url;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
