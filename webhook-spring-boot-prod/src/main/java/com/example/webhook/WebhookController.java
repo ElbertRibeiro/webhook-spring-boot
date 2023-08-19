@@ -1,14 +1,14 @@
 package com.example.webhook;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/webhooks")
+@Controller(/*"/webhooks"*/)
 public class WebhookController {
 
     /*@Autowired WebhookService webhookService;
@@ -21,7 +21,7 @@ public class WebhookController {
 
     @GetMapping("/new")
     public String newWebhookForm() {
-        return "webhooks/new";
+        return "new";
     }
 
 /*    @PostMapping
