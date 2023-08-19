@@ -1,4 +1,4 @@
-package com.example.webhook;
+package com.elbertribeiro.webhook;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

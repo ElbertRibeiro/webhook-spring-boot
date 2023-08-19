@@ -1,4 +1,4 @@
-package com.example.webhook;
+package com.elbertribeiro.webhook;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.example.webhook;
+package com.elbertribeiro.webhook;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

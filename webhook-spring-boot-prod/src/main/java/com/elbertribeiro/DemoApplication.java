@@ -1,4 +1,4 @@
-package com.example;
+package com.elbertribeiro;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

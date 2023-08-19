@@ -1,4 +1,4 @@
-package com.example.greeting;
+package com.elbertribeiro.greeting;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

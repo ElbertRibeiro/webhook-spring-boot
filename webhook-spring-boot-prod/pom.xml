@@ -8,9 +8,7 @@
 		<version>1.0.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<groupId>com.example</groupId>
 	<artifactId>webhook-spring-boot-prod</artifactId>
-	<description>Demo project for Spring Boot</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
