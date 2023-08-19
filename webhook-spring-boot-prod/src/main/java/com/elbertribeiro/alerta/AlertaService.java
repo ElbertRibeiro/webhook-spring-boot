@@ -5,9 +5,10 @@ import com.elbertribeiro.webhook.WebhookService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -19,22 +20,26 @@ public class AlertaService {
     WebHookHttpClient webHookHttpClient;
 
     public AlertaDto enviaAlerta() {
-        AlertaDto alertaDtos = new AlertaDto();
-        webhookService.findAll().forEach(webhook -> {
-            try {
-                webHookHttpClient.get(webhook.getUrl(), String.class);
-                Alerta alerta = new Alerta(webhook.getUrl());
-                List<Alerta> alertas = new ArrayList<>();
-                alertas.add(alerta);
-                alertaDtos.setAppsNotificados(alertas);
-            } catch (Exception e) {
-                log.error("Erro ao fazer a requisição para: " + webhook.getUrl(), e);
-                Alerta alerta = new Alerta(webhook.getUrl());
-                List<Alerta> alertas = new ArrayList<>();
-                alertas.add(alerta);
-                alertaDtos.setAppsNaoNotificados(alertas);
-            }
-        });
-        return alertaDtos;
+        List<Alerta> appsNotificados = webhookService.findAll()
+                .stream()
+                .map(webhook -> {
+                    try {
+                        webHookHttpClient.get(webhook.getUrl(), String.class);
+                        return new Alerta(webhook.getUrl(), null);
+                    } catch (HttpClientErrorException e) {
+                        log.error("Erro ao fazer a requisição para: " + webhook.getUrl(), e);
+                        return new Alerta(webhook.getUrl(), e.getStatusCode().toString());
+                    }
+                })
+                .collect(Collectors.toList());
+
+        List<Alerta> appsNaoNotificados = appsNotificados.stream()
+                .filter(alerta -> alerta.getErro() != null)
+                .collect(Collectors.toList());
+
+        List<Alerta> appsNotificadosComSucesso = appsNotificados.stream()
+                .filter(alerta -> alerta.getErro() == null)
+                .collect(Collectors.toList());
+        return new AlertaDto(appsNotificadosComSucesso, appsNaoNotificados);
     }
 }
