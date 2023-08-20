@@ -4,23 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentação do Webhook em Spring Boot</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        p {
-            line-height: 1.5;
-        }
-        code {
-            background-color: #f4f4f4;
-            padding: 5px;
-            font-family: "Courier New", monospace;
-        }
-    </style>
 </head>
 <body>
 <h1>Documentação do Webhook em Spring Boot</h1>
